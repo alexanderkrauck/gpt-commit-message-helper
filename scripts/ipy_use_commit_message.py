@@ -2,15 +2,15 @@
 import os
 os.chdir("..")
 
-import gpt_commit_message
+import gpt_change_message
 
 #%%
-commit_message,promt = gpt_commit_message.generate_commit_message(".", return_prompt=True)
-print(promt)
+commit_message, promts = gpt_change_message.generate_change_message(".", return_prompts=True)
+#print(promt)
 print(commit_message)
+
 # %%
-from git import Repo
-# %%
-repo = Repo(".")
-[item.a_path for item in repo.index.diff('HEAD')]
+for promt in promts:
+    print(promt)
+    print()
 # %%
